@@ -1,0 +1,96 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form" method="post" enctype="multipart/form-data">
+            <div class="pull-left">
+                <div class="btn-group">
+                    <a href="<?php echo $this->linkToRoute('admin-blog-list');?>" class="btn btn-success"><i class="fa fa-arrow-circle-left"></i> Back to list</a>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
+<?php
+
+if (isset($this->result)) {
+    $status = (isset($this->result['errors']) ? 'danger' : 'success');
+    echo Fennec\Library\Alerts::Create($status, $this->result['result']);
+}
+?>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" required value="<?php echo (isset($this->title) ? $this->title : null);?>" maxlength="255">
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-4">
+                        <label for="url">Custom URL</label>
+                        <input type="text" name="url" id="url" class="form-control" value="<?php echo (isset($this->url) ? $this->url : null);?>">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <label for="publishdate">Publish date</label>
+                        <input type="text" name="publishdate" id="publishdate" class="form-control datetime" required value="<?php echo (isset($this->publishdate) ? $this->publishdate : date("Y-m-d H:i"));?>">
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-4">
+                        <label for="status">Status</label>
+                        <select name="status" size="1" class="form-control">
+                            <option value="1" <?php echo (isset($this->status) && $this->status ? "selected" : "");?>>Active</option>
+                            <option value="0" <?php echo (isset($this->status) && !$this->status ? "selected" : "");?>>Inactive</option>
+                        </select>
+                    </div>
+                        
+                    <div class="col-sm-12 col-md-4">
+                        <label for="tags">Tags</label>
+                        <input type="text" name="tags" id="tags" class="form-control tagsinput" value="<?php echo (isset($this->tags) ? $this->tags : null);?>">
+                    </div>
+                    
+
+                </div>
+            </div>
+            
+            
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <label for="image">Post image (max. <?php echo ini_get("upload_max_filesize");?>)</label>
+                        <input type="file" name="image" id="image" data-type="input-file" accept="image/*">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <label for="image-facebook">Image for Facebook sharing (max. <?php echo ini_get("upload_max_filesize");?>)</label>
+                        <input type="file" name="image-facebook" id="image-facebook" data-type="input-file" accept="image/*">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <label for="image-twitter">Image for Twitter sharing (max. <?php echo ini_get("upload_max_filesize");?>)</label>
+                        <input type="file" name="image-twitter" id="image-twitter" data-type="input-file" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="preview">Preview</label>
+                <textarea name="preview" id="preview" class="form-control"><?php echo (isset($this->preview) ? $this->preview : null);?></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea name="body" id="body" class="form-control" required><?php echo (isset($this->body) ? $this->body : null);?></textarea>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+            </div>
+        </form>
+    </div>
+</div>

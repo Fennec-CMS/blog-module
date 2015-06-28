@@ -1,5 +1,44 @@
-<p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="pull-left">
+            <div class="btn-group">
+                <a href="<?php echo $this->linkToRoute('admin-blog-write');?>" class="btn btn-success"><i class="fa fa-plus-circle"></i> Write new post</a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Publish date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
 <?php
-echo $this->text;
+foreach ($this->list as $post) {
+    $publishDate = new DateTime($post->getPublishDate());
+    $now = new DateTime();
+
+    $publishStatusIcon = ($post->getStatus() ? "fa-check" : "fa-times");
+    $publishStatusColor = ($post->getStatus() ? "text-success" : "text-danger");
 ?>
-</p>
+                <tr>
+                    <th><i class="<?php echo $publishStatusColor;?> fa <?php echo $publishStatusIcon;?>"></i></th>
+                    <td><?php echo $post->getTitle();?></td>
+                    <td><?php echo $post->getPublishDate();?></td>
+                    <td>
+                        <a href="<?php echo $this->linkToRoute('admin-blog-edit', array($post->getId()));?>">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+<?php
+}
+?>
+            </tbody>
+        </table>
+    </div>
+</div>
