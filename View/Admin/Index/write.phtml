@@ -61,19 +61,14 @@ if (isset($this->result)) {
             
             <div class="form-group">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-4">
+                    <div class="col-xs-12 col-sm-6">
                         <label for="image">Post image (max. <?php echo ini_get("upload_max_filesize");?>)</label>
                         <input type="file" name="image" id="image" data-type="input-file" accept="image/*">
                     </div>
 
-                    <div class="col-xs-12 col-sm-4">
-                        <label for="image-facebook">Image for Facebook sharing (max. <?php echo ini_get("upload_max_filesize");?>)</label>
-                        <input type="file" name="image-facebook" id="image-facebook" data-type="input-file" accept="image/*">
-                    </div>
-
-                    <div class="col-xs-12 col-sm-4">
-                        <label for="image-twitter">Image for Twitter sharing (max. <?php echo ini_get("upload_max_filesize");?>)</label>
-                        <input type="file" name="image-twitter" id="image-twitter" data-type="input-file" accept="image/*">
+                    <div class="col-xs-12 col-sm-6">
+                        <label for="image-social">Image for social sharing (max. <?php echo ini_get("upload_max_filesize");?>)</label>
+                        <input type="file" name="image-social" id="image-social" data-type="input-file" accept="image/*">
                     </div>
                 </div>
             </div>
