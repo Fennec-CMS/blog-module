@@ -209,6 +209,8 @@ class Blog extends Base
      */
     public function getActivePosts($limit = 10, $page = 1)
     {
+        $page--;
+
         $offset = $limit * $page;
 
         return $this->select('*')
