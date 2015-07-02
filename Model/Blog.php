@@ -211,8 +211,6 @@ class Blog extends Base
     {
         $offset = $limit * $page;
 
-        $limit = "$limit, $page";
-
         return $this->select('*')
                 ->from(self::$table)
                 ->where('status AND publishdate <= NOW()')
