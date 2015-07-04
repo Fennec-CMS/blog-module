@@ -19,7 +19,6 @@
             <tbody>
 <?php
 foreach ($this->list as $post) {
-    $publishDate = new DateTime($post->getPublishDate());
     $now = new DateTime();
 
     $publishStatusIcon = ($post->getStatus() ? "fa-check" : "fa-times");
@@ -28,7 +27,7 @@ foreach ($this->list as $post) {
                 <tr>
                     <th><i class="<?php echo $publishStatusColor;?> fa <?php echo $publishStatusIcon;?>"></i></th>
                     <td><?php echo $post->getTitle();?></td>
-                    <td><?php echo $post->getPublishDate();?></td>
+                    <td><?php echo $post->getPublishDate()->format('Y-m-d H:i');?></td>
                     <td>
                         <a href="<?php echo $this->linkToRoute('admin-blog-edit', array($post->getId()));?>">
                             <i class="fa fa-pencil"></i>
