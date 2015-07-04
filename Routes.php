@@ -11,6 +11,17 @@ $routes = array(
         'layout' => 'Default'
     ),
     array(
+        'name' => 'blog-page',
+        'route' => '/blog/page/([0-9]+)/',
+        'params' => array(
+            'page'
+        ),
+        'module' => 'Blog',
+        'controller' => 'Index',
+        'action' => 'index',
+        'layout' => 'Default'
+    ),
+    array(
         'name' => 'blog-read',
         'route' => '/blog/([a-zA-Z0-9+-]+)/',
         'params' => array(

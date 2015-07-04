@@ -21,6 +21,13 @@ class Index extends Base
     use \Fennec\Library\Urls;
 
     /**
+     * Default number of posts shown on listing
+     *
+     * @var integer
+     */
+    const POSTS_PER_PAGE = 10;
+
+    /**
      * Blog Model
      *
      * @var \Fennec\Modules\Blog\Model\Blog
@@ -40,7 +47,13 @@ class Index extends Base
      */
     public function indexAction()
     {
-        $this->posts = $this->model->getActivePosts();
+        if ($this->getParam('page')) {
+            $page = intval($this->getParam('page'));
+        } else {
+            $page = 1;
+        }
+
+        $this->posts = $this->model->getActivePosts(self::POSTS_PER_PAGE, $page);
         $this->totalPosts = $this->model->countArticles();
     }
 
