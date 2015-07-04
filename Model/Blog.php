@@ -218,8 +218,21 @@ class Blog extends Base
                 ->where('status AND publishdate <= NOW()')
                 ->limit($limit)
                 ->offset($offset)
+                ->order('publishdate', 'DESC')
                 ->execute()
                 ->fetchAll();
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see \Fennec\Model\Base::getAll()
+     */
+    public function getAll()
+    {
+        return $this->select("*")
+            ->from(self::$table)
+            ->order('publishdate', 'DESC')
+            ->execute();
     }
 
     /**
