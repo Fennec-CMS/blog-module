@@ -182,7 +182,7 @@ class Blog extends Base
                 }
 
                 if ($this->id && isset($_FILES['image-social']) && ! empty($_FILES['image-social']['name'])) {
-                    $image = ImageWorkshop::initFromPath($_FILES['image-facebook']['tmp_name']);
+                    $image = ImageWorkshop::initFromPath($_FILES['image-social']['tmp_name']);
                     $image->resizeInPixel(500, false, true, 0, 0, 'MM');
                     $image->cropInPixel(500, 500, 0, 0, 'MM');
                     $image->save(self::UPLOAD_DIR, $this->id . '-' . 'social.png', true);
