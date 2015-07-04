@@ -41,6 +41,7 @@ class Index extends Base
     public function indexAction()
     {
         $this->posts = $this->model->getActivePosts();
+        $this->totalPosts = $this->model->countArticles();
     }
 
     /**

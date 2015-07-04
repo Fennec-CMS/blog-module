@@ -224,6 +224,25 @@ class Blog extends Base
     }
 
     /**
+     * Return the total of posts
+     *
+     * @param boolean $includeInactive
+     * @return integer
+     */
+    public function countArticles($includeInactive = false)
+    {
+        $select = $this->select("COUNT(*) AS total")
+                ->from(self::$table);
+
+        if (! $includeInactive) {
+            $select->where('status');
+        }
+
+        $total = $select->execute()->fetchColumn(0);
+        return $total;
+    }
+
+    /**
      * (non-PHPdoc)
      * @see \Fennec\Model\Base::getAll()
      */
