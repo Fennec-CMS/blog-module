@@ -251,7 +251,7 @@ class Blog extends Base
         $this->tags = filter_var($this->tags, \FILTER_SANITIZE_STRING);
         $this->author = $_SESSION['fennecAdmin']->getId();
         $this->publishdate = filter_var($this->publishdate, \FILTER_SANITIZE_STRING);
-        $this->timestamp = date("Y-m-d H:i:s");
+        $this->timestamp = (empty($this->timestamp) ? date("Y-m-d H:i:s") : $this->timestamp);
         $this->url = $this->toSlug(empty($this->url) ? $this->title : $this->url);
         $this->status = $this->status ? 1 : 0;
 
