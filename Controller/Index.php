@@ -55,6 +55,7 @@ class Index extends Base
 
         $this->posts = $this->model->getActivePosts(self::POSTS_PER_PAGE, $page);
         $this->totalPosts = $this->model->countArticles();
+        $this->totalPages = ceil($this->totalPosts / self::POSTS_PER_PAGE);
     }
 
     /**
