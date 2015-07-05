@@ -39,6 +39,7 @@ class Index extends Base
      */
     public function __construct()
     {
+        parent::__construct();
         $this->model = new BlogModel();
     }
 
@@ -47,11 +48,15 @@ class Index extends Base
      */
     public function indexAction()
     {
+        $title = "Blog module";
         if ($this->getParam('page')) {
             $page = intval($this->getParam('page'));
+            $title .= " :: Page $page";
         } else {
             $page = 1;
         }
+
+        $this->setTitle($title);
 
         $this->posts = $this->model->getActivePosts(self::POSTS_PER_PAGE, $page);
         $this->totalPosts = $this->model->countArticles();
@@ -69,6 +74,7 @@ class Index extends Base
 
             if (count($post)) {
                 $this->post = $post[0];
+                $this->setTitle($this->post->getTitle());
             } else {
                 $this->throwHttpError(404);
             }
