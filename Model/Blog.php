@@ -56,6 +56,13 @@ class Blog extends Base
     public $tags;
 
     /**
+     * Short description for SEO (max 150 characters)
+     *
+     * @var string
+     */
+    public $seodescription;
+
+    /**
      * Post preview text
      *
      * @var string
@@ -273,11 +280,13 @@ class Blog extends Base
         $this->timestamp = (empty($this->timestamp) ? date("Y-m-d H:i:s") : $this->timestamp);
         $this->url = $this->toSlug(empty($this->url) ? $this->title : $this->url);
         $this->status = $this->status ? 1 : 0;
+        $this->seodescription = strip_tags($this->seodescription);
 
         return array(
             'title' => $this->title,
             'tags' => $this->tags,
             'url' => $this->url,
+            'seodescription' => $this->seodescription,
             'preview' => $this->preview,
             'body' => $this->body,
             'author' => $this->author,

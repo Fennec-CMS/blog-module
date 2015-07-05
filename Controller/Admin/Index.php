@@ -74,6 +74,7 @@ class Index extends AdminController
                 }
 
                 $this->model->setTitle($this->getPost('title'));
+                $this->model->setSeodescription($this->getPost('seodescription'));
                 $this->model->setPreview($this->getPost('preview'));
                 $this->model->setBody($this->getPost('body'));
                 $this->model->setPublishDate($this->getPost('publishdate'));

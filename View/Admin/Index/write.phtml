@@ -52,13 +52,9 @@ if (isset($this->result)) {
                         <label for="tags">Tags</label>
                         <input type="text" name="tags" id="tags" class="form-control tagsinput" value="<?php echo (isset($this->tags) ? $this->tags : null);?>">
                     </div>
-                    
-
                 </div>
             </div>
-            
-            
-            
+
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
@@ -73,6 +69,11 @@ if (isset($this->result)) {
                 </div>
             </div>
             
+            <div class="form-group">
+                <label for="seodescription">Short description for SEO (max. 150 characters)</label>
+                <textarea name="seodescription" id="seodescription" class="form-control no-richtext" maxlength="150"><?php echo (isset($this->seodescription) ? $this->seodescription : null);?></textarea>
+            </div>
+
             <div class="form-group">
                 <label for="preview">Preview</label>
                 <textarea name="preview" id="preview" class="form-control"><?php echo (isset($this->preview) ? $this->preview : null);?></textarea>
