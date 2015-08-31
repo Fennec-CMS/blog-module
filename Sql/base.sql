@@ -5,7 +5,7 @@ CREATE TABLE blog (
   body TEXT,
   author INT,
   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  publishdate TIMESTAMP DEFAULT CURRENT_TIEMSTAMP,
+  publishdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   tags TEXT,
   status BOOLEAN DEFAULT true,
   seodescription VARCHAR(155),
