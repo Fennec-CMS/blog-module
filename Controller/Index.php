@@ -9,6 +9,7 @@ namespace Fennec\Modules\Blog\Controller;
 
 use \Fennec\Controller\Base;
 use \Fennec\Modules\Blog\Model\Blog as BlogModel;
+use \Fennec\Services\Settings;
 
 /**
  * Blog module
@@ -25,7 +26,7 @@ class Index extends Base
      *
      * @var integer
      */
-    const POSTS_PER_PAGE = 10;
+    const DEFAULT_POSTS_PER_PAGE = 10;
 
     /**
      * Blog Model
@@ -33,6 +34,12 @@ class Index extends Base
      * @var \Fennec\Modules\Blog\Model\Blog
      */
     private $model;
+    
+    /**
+     * Settings object
+     * @var Settings $settings
+     */
+    public $settings;
 
     /**
      * Defines $this->model
@@ -40,6 +47,9 @@ class Index extends Base
     public function __construct()
     {
         parent::__construct();
+        
+        $this->settings = new Settings('Blog');
+        
         $this->model = new BlogModel();
     }
 
@@ -57,10 +67,15 @@ class Index extends Base
         }
 
         $this->setTitle($title);
+        
+        $postsPerPage = $this->settings->getSetting('postsPerPage');
+        if (! $postsPerPage) {
+            $postsPerPage = self::DEFAULT_POSTS_PER_PAGE;
+        }
 
-        $this->posts = $this->model->getActivePosts(self::POSTS_PER_PAGE, $page);
+        $this->posts = $this->model->getActivePosts($postsPerPage, $page);
         $this->totalPosts = $this->model->countArticles();
-        $this->totalPages = ceil($this->totalPosts / self::POSTS_PER_PAGE);
+        $this->totalPages = ceil($this->totalPosts / $postsPerPage);
     }
 
     /**

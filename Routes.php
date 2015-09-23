@@ -58,6 +58,14 @@ $routes = array(
         'controller' => 'Admin\\Index',
         'action' => 'write',
         'layout' => 'Admin/Default'
+    ),
+    array(
+        'name' => 'admin-blog-settings',
+        'route' => '/admin/blog/settings/',
+        'module' => 'Blog',
+        'controller' => 'Admin\\Index',
+        'action' => 'settings',
+        'layout' => 'Admin/Default'
     )
 );
 

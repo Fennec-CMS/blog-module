@@ -10,13 +10,14 @@ namespace Fennec\Modules\Blog\Controller\Admin;
 use \Fennec\Controller\Admin\Index as AdminController;
 use \Fennec\Modules\Blog\Model\Blog as BlogModel;
 use \Fennec\Modules\Blog\Model\Tags as TagsModel;
+use \Fennec\Services\Settings;
 
 
 /**
  * Sample custom module (Admin controller)
  *
  * @author David Lima
- * @version b0.1
+ * @version b0.2
  */
 class Index extends AdminController
 {
@@ -25,6 +26,12 @@ class Index extends AdminController
      * @var \Fennec\Modules\Blog\Model\Blog
      */
     private $model;
+    
+    /**
+     * Settings object
+     * @var Settings $settings
+     */
+    public $settings;
 
     /**
      * Initial setup
@@ -34,6 +41,8 @@ class Index extends AdminController
         parent::__construct();
 
         $this->model = new BlogModel();
+        
+        $this->settings = new Settings('Blog');
 
         $this->moduleInfo = array(
             'title' => 'Blog'
@@ -94,5 +103,34 @@ class Index extends AdminController
                 $this->throwHttpError(500);
             }
         }
+    }
+    
+    /**
+     * If is a POST, try to update all module settings included on request
+     */
+    public function settingsAction()
+    {
+        $this->moduleInfo = array(
+            'title' => 'Blog settings'
+        );
+        
+        if ($this->isPost()) {
+            $result = array();
+            
+            try {
+                foreach ($this->getPost() as $postKey => $postValue) {
+                    $this->settings->saveSetting($postKey, $postValue);
+                }
+                $result['result'] = 'Settings updated!';
+            } catch(\Exception $e) {
+                $result['errors'] = array();
+                $result['errors'][] = $e->getMessage();
+                $result['result'] = implode('<br>', $result['errors']);
+            }
+            
+            $this->result = $result;
+        }
+        
+        $this->postsPerPage = $this->settings->getSetting('postsPerPage');
     }
 }

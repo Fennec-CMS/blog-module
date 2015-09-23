@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form" method="post" enctype="multipart/form-data">
+            <div class="pull-left">
+                <div class="btn-group">
+                    <a href="<?php echo $this->linkToRoute('admin-blog-list');?>" class="btn btn-success"><i class="fa fa-arrow-circle-left"></i> Back to list</a>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save settings</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
+<?php
+
+if (isset($this->result)) {
+    $status = (isset($this->result['errors']) ? 'danger' : 'success');
+    echo Fennec\Library\Alerts::Create($status, $this->result['result']);
+}
+?>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="title">Posts per page</label>
+                        <input type="number" name="postsPerPage" id="postsPerPage" class="form-control" required value="<?php echo (isset($this->postsPerPage) ? $this->postsPerPage : null);?>" min="1">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save settings</button>
+            </div>
+        </form>
+    </div>
+</div>                    
