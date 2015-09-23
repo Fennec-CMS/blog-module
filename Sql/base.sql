@@ -17,3 +17,8 @@ CREATE TABLE tags (
   id SERIAL
 );
 
+/*
+Defines default posts per page to show
+This can be changed via GUI anytime
+*/
+INSERT INTO settings(module, key, value) VALUES('Blog', 'postsPerPage', 10);
