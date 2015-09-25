@@ -14,7 +14,7 @@ use \Fennec\Library\PHPImageWorkshop\ImageWorkshop;
  * Blog model
  *
  * @author David Lima
- * @version b0.1
+ * @version 1.0
  */
 class Blog extends Base
 {

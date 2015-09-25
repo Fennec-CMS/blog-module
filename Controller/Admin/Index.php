@@ -17,7 +17,7 @@ use \Fennec\Services\Settings;
  * Sample custom module (Admin controller)
  *
  * @author David Lima
- * @version b0.2
+ * @version 1.0
  */
 class Index extends AdminController
 {

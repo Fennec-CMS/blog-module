@@ -15,7 +15,7 @@ use \Fennec\Services\Settings;
  * Blog module
  *
  * @author David Lima
- * @version b0.1
+ * @version 1.0
  */
 class Index extends Base
 {
