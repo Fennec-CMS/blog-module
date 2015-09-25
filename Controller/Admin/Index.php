@@ -132,5 +132,8 @@ class Index extends AdminController
         }
         
         $this->postsPerPage = $this->settings->getSetting('postsPerPage');
+        $this->rssChannelTitle = $this->settings->getSetting('rssChannelTitle');
+        $this->rssChannelDescription = $this->settings->getSetting('rssChannelDescription');
+        $this->rssTotalPosts = $this->settings->getSetting('rssTotalPosts');
     }
 }

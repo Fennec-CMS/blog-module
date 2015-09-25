@@ -19,14 +19,47 @@ if (isset($this->result)) {
     echo Fennec\Library\Alerts::Create($status, $this->result['result']);
 }
 ?>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <label for="title">Posts per page</label>
-                        <input type="number" name="postsPerPage" id="postsPerPage" class="form-control" required value="<?php echo (isset($this->postsPerPage) ? $this->postsPerPage : null);?>" min="1">
+            <fieldset>
+                <legend>General</legend>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="title">Posts per page</label>
+                            <input type="number" name="postsPerPage" id="postsPerPage" class="form-control" required value="<?php echo (isset($this->postsPerPage) ? $this->postsPerPage : null);?>" min="1">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>RSS Feeds</legend>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="title">Channel title</label>
+                            <input type="text" name="rssChannelTitle" id="rssChannelTitle" class="form-control" required value="<?php echo (isset($this->rssChannelTitle) ? $this->rssChannelTitle : null);?>">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="title">Channel description</label>
+                            <input type="text" name="rssChannelDescription" id="rssChannelDescription" class="form-control" required value="<?php echo (isset($this->rssChannelDescription) ? $this->rssChannelDescription : null);?>">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="title">Max posts to show</label>
+                            <input type="number" name="rssTotalPosts" id="rssTotalPosts" class="form-control" required value="<?php echo (isset($this->rssTotalPosts) ? $this->rssTotalPosts : null);?>" min="1">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save settings</button>

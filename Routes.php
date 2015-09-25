@@ -22,6 +22,14 @@ $routes = array(
         'layout' => 'Default'
     ),
     array(
+        'name' => 'blog-rss',
+        'route' => '/blog/rss/',
+        'module' => 'Blog',
+        'controller' => 'Index',
+        'action' => 'rss',
+        'layout' => null
+    ),
+    array(
         'name' => 'blog-read',
         'route' => '/blog/([a-zA-Z0-9+-]+)/',
         'params' => array(

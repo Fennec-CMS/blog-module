@@ -21,4 +21,8 @@ CREATE TABLE tags (
 Defines default posts per page to show
 This can be changed via GUI anytime
 */
-INSERT INTO settings(module, key, value) VALUES('Blog', 'postsPerPage', 10);
+INSERT INTO settings(module, key, value) VALUES
+('Blog', 'postsPerPage', 10),
+('Blog', 'rssChannelTitle', 'Fennec RSS'),
+('Blog', 'rssChannelDescription', 'This is a description for Fennec RSS'),
+('Blog', 'rssTotalPosts', 10);
